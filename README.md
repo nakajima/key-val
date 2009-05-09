@@ -25,3 +25,7 @@ Easily store and retrieve key/value pairs in `~/.key-valerie`
     $ val
 
 That's it and that's all folks.
+
+## Todo
+
+* New name. This is a mistake anyway.
