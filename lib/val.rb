@@ -26,7 +26,7 @@
 require 'yaml'
 
 class KeyValerie
-  def initialize(args)
+  def run(args)
     init unless File.exist?(tokens)
     sym = case
     when args.empty?            then :list
@@ -56,6 +56,14 @@ class KeyValerie
     store.each do |key, val|
       puts "- #{key}: #{val}"
     end
+  end
+  
+  def each
+    store.each { |key,val| yield(key,val) }
+  end
+  
+  def keys
+    store.keys
   end
 
   private
