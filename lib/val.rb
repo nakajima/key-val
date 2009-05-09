@@ -23,6 +23,7 @@
 #   $ val
 #
 # TODO Real options
+require 'yaml'
 
 class KeyValerie
   def initialize(args)
@@ -65,15 +66,12 @@ class KeyValerie
 
   def save(new_store)
     File.open(tokens, 'w+') do |file|
-      store.each do |key,val|
-        file.puts key
-        file.puts val
-      end
+      YAML.dump(store, file)
     end
   end
 
   def store
-    @store ||= Hash[*File.read(tokens).split(/\n/)] || {}
+    @store ||= YAML.load_file(tokens) || {}
   end
 
   def tokens
