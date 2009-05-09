@@ -25,3 +25,12 @@ Easily store and retrieve key/value pairs in `~/.key-valerie`
     $ val
 
 That's it and that's all folks.
+
+## Tab Completions
+
+Install Dr. Nic's `tabtab` gem, then add this line to the bottom
+of your `~/.tabtab.bash`:
+
+    complete -o default -C 'tabtab --gem key-valerie/lib/completions.rb' val
+
+Then you can tab complete the keys.
