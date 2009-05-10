@@ -1,6 +1,7 @@
 # val
 
-Easily store and retrieve key/value pairs in `~/.key-valerie`
+Easily store and retrieve key/value pairs in an encrypted `~/.key-valerie`
+Useful for things like pesky API keys.
 
 ## USAGE
 
