@@ -24,6 +24,11 @@
 #
 # TODO Real options
 require 'yaml'
+begin
+  require 'crypt/blowfish'
+rescue LoadError
+  puts "You must install the `crypt` gem."
+end
 
 class KeyValerie
   def run(args)
@@ -57,16 +62,20 @@ class KeyValerie
       puts "- #{key}: #{val}"
     end
   end
-  
+
   def each
     store.each { |key,val| yield(key,val) }
   end
-  
+
   def keys
     store.keys
   end
 
   private
+
+  def crypter
+    @crypter ||= Crypt::Blowfish.new('val-crypt-key')
+  end
 
   def init
     File.open(tokens, 'w+') { |f| f << '' }
@@ -74,12 +83,15 @@ class KeyValerie
 
   def save(new_store)
     File.open(tokens, 'w+') do |file|
-      YAML.dump(store, file)
+      file << crypter.encrypt_string(store.to_yaml)
     end
   end
 
   def store
-    @store ||= YAML.load_file(tokens) || {}
+    @store ||= begin
+      text = File.read(tokens)
+      text.empty? ? {} : YAML.load(crypter.decrypt_string(text))
+    end
   end
 
   def tokens
