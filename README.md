@@ -1,6 +1,6 @@
 # val
 
-Easily store and retrieve key/value pairs in an encrypted `~/.key-valerie`
+Easily store and retrieve key/value pairs in an encrypted `~/.key-val`
 Useful for things like pesky API keys.
 
 ## USAGE
@@ -32,6 +32,6 @@ That's it and that's all folks.
 Install Dr. Nic's `tabtab` gem, then add this line to the bottom
 of your `~/.tabtab.bash`:
 
-    complete -o default -C 'tabtab --gem key-valerie/lib/completions.rb' val
+    complete -o default -C 'tabtab --gem key-val/lib/completions.rb' val
 
 Then you can tab complete the keys.

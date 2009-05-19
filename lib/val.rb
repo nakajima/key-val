@@ -1,4 +1,4 @@
-# Keep track of key/value pairs in a .key-valerie file.
+# Keep track of key/value pairs in a .key-val file.
 #
 # USAGE
 #
@@ -95,6 +95,6 @@ class KeyValerie
   end
 
   def tokens
-    File.join(ENV['HOME'], '.key-valerie')
+    File.join(ENV['HOME'], '.key-val')
   end
 end
